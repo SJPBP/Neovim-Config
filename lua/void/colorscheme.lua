@@ -12,9 +12,17 @@ catppuccin.setup({
 		treesitter = true,
 		which_key = true,
 		notify = false,
+		harpoon = true,
 		mini = {
 			enabled = true,
 			indentscope_color = "",
+		},
+		mason = true,
+		nvim-cmp = true,
+		nvimtree = true,
+		telescope = {
+			enabled = true,
+			-- style = "nvchad"
 		},
 	}
 })
