@@ -12,3 +12,4 @@ require "void.telescope"
 require("void.treesitter")
 require("void.comment")
 require("void.gitsigns")
+require("void.nvim-tree")

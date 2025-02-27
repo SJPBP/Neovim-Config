@@ -9,8 +9,8 @@ wk.add({
 		mode = "n",
 		{
 			"<leader>e",
-			":Lex 30<cr>",
-			desc = "Open sidebar",
+			"<cmd>NvimTreeToggle<cr>",
+			desc = "Explorer",
 		},
 		{
 			"<leader>-",
