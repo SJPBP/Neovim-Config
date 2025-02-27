@@ -18,8 +18,6 @@ catppuccin.setup({
 			indentscope_color = "",
 		},
 		mason = true,
-		nvim-cmp = true,
-		nvimtree = true,
 		telescope = {
 			enabled = true,
 			-- style = "nvchad"

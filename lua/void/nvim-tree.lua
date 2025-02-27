@@ -39,10 +39,14 @@ nvim_tree.setup {
 			error = "",
 		},
 	},
+	sync_root_with_cwd = true, -- For ahmedkhalf/project.nvim
+	respect_buf_cwd = true, -- For ahmedkhalf/project.nvim
+
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
 		ignore_list = {},
+		update_root = true, -- For ahmedkhalf/project.nvim
 	},
 	git = {
 		enable = true,
