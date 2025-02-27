@@ -69,4 +69,4 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts) -- Press <Alt-j> to move text 
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts) -- Press <Alt-k> to move text up
 
 
-keymap({ "n", "v", "i" }, "<C-s", "<cmd>:w<cr>", opts) -- Save file using Ctrl-s
+keymap({ "n", "v", "i" }, "<C-s>", "<cmd>:w<cr>", opts) -- Save file using Ctrl-s
