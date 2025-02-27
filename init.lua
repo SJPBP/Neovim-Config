@@ -9,3 +9,6 @@ require "void.autopairs"
 require "void.lsp"
 require "void.harpoon"
 require "void.telescope"
+require("void.treesitter")
+require("void.comment")
+require("void.gitsigns")

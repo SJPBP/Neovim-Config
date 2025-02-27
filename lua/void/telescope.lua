@@ -3,6 +3,42 @@ if not status_ok then
 	return
 end
 
+---- START OF CUSTOM PATH ----
+local function normalize_path(path)
+	return path:gsub("\\", "/")
+end
+
+local function normalize_cwd()
+	return normalize_path(vim.loop.cwd()) .. "/"
+end
+
+local function is_subdirectory(cwd, path)
+	return string.lower(path:sub(1, #cwd)) == string.lower(cwd)
+end
+
+local function split_filepath(path)
+	local normalized_path = normalize_path(path)
+	local normalized_cwd = normalize_cwd()
+	local filename = normalized_path:match("[^/]+$")
+
+	if is_subdirectory(normalized_cwd, normalized_path) then
+		local stripped_path = normalized_path:sub(#normalized_cwd + 1, -(#filename + 1))
+		return stripped_path, filename
+	else
+		local stripped_path = normalized_path:sub(1, -(#filename + 1))
+		return stripped_path, filename
+	end
+end
+
+local function path_display(_, path)
+	local stripped_path, filename = split_filepath(path)
+	if filename == stripped_path or stripped_path == "" then
+		return filename
+	end
+	return string.format("%s ~ %s", filename, stripped_path)
+end
+---- END OF CUSTOM PATH ----
+
 -- Enable Telescope extensions if they are installed
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
@@ -53,17 +89,35 @@ telescope.setup {
 		selection_caret = " ",
 		path_display = { "smart" },
 
+		layout_strategy = "horizontal",
+
 		layout_config = {
-			preview_cutoff = 90,
+			-- width = function(_, max_columns)
+			-- 	local percentage = 0.5
+			-- 	local max = 70
+			-- 	return math.min(math.floor(percentage * max_columns), max)
+			-- end,
+			-- width = { 0.1, max = 20, min = 500 }
+			horizontal = {
+				-- prompt_position = "top",
+				width = { padding = 0 },
+				height = { padding = 0 },
+				preview_width = 0.7,
+			},
 		},
+
+		sorting_strategy = "ascending",
+
+		-- specify the formatter here
+		path_display = path_display,
 
 		mappings = {
 			i = {
-				["<C-n>"] = actions.cycle_history_next,
-				["<C-p>"] = actions.cycle_history_prev,
+				["<C-j>"] = actions.cycle_history_next,
+				["<C-k>"] = actions.cycle_history_prev,
 
-				["<C-j>"] = actions.move_selection_next,
-				["<C-k>"] = actions.move_selection_previous,
+				["<C-n>"] = actions.move_selection_next,
+				["<C-p>"] = actions.move_selection_previous,
 
 				["<C-c>"] = actions.close,
 
