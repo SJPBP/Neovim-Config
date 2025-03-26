@@ -123,10 +123,10 @@ cmp.setup {
 				nvim_lsp = "(LSP)",
 				nvim_lua = "(NVIM)",
 				emoji = "(Emoji)",
-				calc = "(Calc)",
+				-- calc = "(Calc)",
 				luasnip = "(Snippet)",
 				-- tmux = "(TMUX)",
-				-- treesitter = "(TreeSitter)",
+				treesitter = "(TreeSitter)",
 				buffer = "(Buffer)",
 				path = "(Path)",
 			})[entry.source.name]
