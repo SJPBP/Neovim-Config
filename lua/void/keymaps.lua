@@ -1,5 +1,5 @@
 -- local opts = function(desc)
---     desc = "No Description Available"
+--   desc = "No Description Available"
 -- 	return { noremap = true, silent = true }
 -- end
 
@@ -14,8 +14,8 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 -- Modes
+--   sdsd
 --   normal_mode = "n",
 --   insert_mode = "i",
 --   visual_mode = "v",
@@ -23,14 +23,12 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts) -- Move to left window
 keymap("n", "<C-j>", "<C-w>j", opts) -- Move to bottom window
 keymap("n", "<C-k>", "<C-w>k", opts) -- Move to upper window
 keymap("n", "<C-l>", "<C-w>l", opts) -- Move to right winodw
-
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", opts)
@@ -42,7 +40,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)     -- Go to new buffer
+keymap("n", "<S-l>", ":bnext<CR>", opts) -- Go to new buffer
 keymap("n", "<S-h>", ":bprevious<CR>", opts) -- Go to previous buffer
 
 -- Commenting
@@ -58,8 +56,8 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts) -- Go to previous buffer
 
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)  -- Decrease indentiation
-keymap("v", ">", ">gv", opts)  -- Increase indentiation
+keymap("v", "<", "<gv", opts) -- Decrease indentiation
+keymap("v", ">", ">gv", opts) -- Increase indentiation
 
 keymap("v", "p", '"_dP', opts) -- Stop yanking word when replacing the word
 
@@ -68,5 +66,7 @@ keymap("v", "p", '"_dP', opts) -- Stop yanking word when replacing the word
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts) -- Press <Alt-j> to move text down
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts) -- Press <Alt-k> to move text up
 
+-- keymap({ "i", "x", "n", "s" }, "<C-s>", ":w<cr>", { desc = "Save file", noremap = true, silent = true }) -- Save file using Ctrl s
 
-keymap({ "n", "v", "i" }, "<C-s>", "<cmd>:w<cr>", opts) -- Save file using Ctrl-s
+vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true }) -- normal mode
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true }) -- insert mode
